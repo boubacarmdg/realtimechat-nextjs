@@ -8,6 +8,7 @@ import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Chat from '../components/Chat';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Sidebar(){
 
@@ -46,9 +47,10 @@ function Sidebar(){
         <Container>
           <Header>
 
-            <UserAvatar src={user.photoURL} onClick={()=> auth.signOut()} />
+            <UserAvatar src={user.photoURL} />
 
             <IconContainer>
+              
               <IconButton>
                 <ChatIcon />
               </IconButton>
@@ -56,6 +58,11 @@ function Sidebar(){
               <IconButton>
                 <MoreVertIcon />
               </IconButton>
+
+              <IconButton>
+                <ExitToAppIcon onClick={()=> auth.signOut()} />
+              </IconButton>
+              
             </IconContainer>
 
           </Header>
@@ -85,11 +92,9 @@ function Sidebar(){
 export default Sidebar;
 
 const Container = styled.div`
-  flex:0.45;
+  flex:1;
   border-right:1px solid whitesmoke;
   height:100vh;
-  min-width:320px;
-  max-width:350px;
   overflow-y:scroll;
   
   ::-webkit-scrollbar{

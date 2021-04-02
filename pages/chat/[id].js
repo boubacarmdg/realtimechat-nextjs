@@ -16,7 +16,7 @@ function Chat({chat, messages}) {
                 <title>Discussion avec {getRecipientEmail(chat.users,user)}</title>
             </Head>
 
-            <Sidebar />
+            {/* <Sidebar /> */}
 
             <ChatContainer>
                 <ChatScreen chat={chat} messages={messages} />

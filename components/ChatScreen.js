@@ -12,6 +12,7 @@ import { useState } from 'react';
 import firebase from "firebase";
 import getRecipientEmail from '../utils/getRecipientEmail';
 import TimeAgo from "timeago-react";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function ChatScreen({chat,messages}) {
 
@@ -24,6 +25,10 @@ function ChatScreen({chat,messages}) {
         .collection('messages')
         .orderBy('timestamp', 'asc')
     );
+
+    const backButton = () => {
+        router.push(`/`)
+    }
 
     const showMessages = () => {
         if(messagesSnapshot){
@@ -80,6 +85,9 @@ function ChatScreen({chat,messages}) {
     return (
         <Container>
            <Header>
+           <IconButton onClick={backButton}>
+                <ArrowBackIosIcon />
+            </IconButton>
                {recipient ? 
                ( <Avatar src={recipient?.photoURL} />
                    ) : ( <Avatar src={recipientEmail[0]} /> )} 
